@@ -12,28 +12,32 @@
 </head>
 <body>
     <div>
-        @{ 
+        @{
             int m = 10;
             string s = "<h1>Demo</h1>";
             string[] data = { "item1", "item2", "item3" };
         }
 
         <ul>
-            @*<li>不用轉字串:@m</li>
+            <li>不用轉字串:@m</li>
+            @*在<li></li>中的字會通通列出來*@
             <li>自動作HTMLEncode: @s</li>
-            <li>不作HTMLEncode:@Html.Raw(s)</li>*@
-            @*test for*@           
-                @for (int i = 0; i < data.Length; i++)
-                {
-                    <li>@data[i]</li>
+            @*用@Html.Raw(s)的話就會把s中的標籤當成標籤不再當成文字*@
+            <li>不作HTMLEncode:@Html.Raw(s)</li>
+            @*test for*@
+            @for (int i = 0; i < data.Length; i++)
+            {
+                <li>@data[i]</li>
+            }
         </ul>
         <ul>
-        @{ 
-            for (int i = 0; i < data.Length; i++)
-            {
-            <li>@data[i]</li>
+            @*就算把@放在大括號後面也可以*@
+            @{
+                for (int i = 0; i < data.Length; i++)
+                {
+                    <li>@data[i]</li>
+                }
             }
-        }
         </ul>
     </div>
 </body>
